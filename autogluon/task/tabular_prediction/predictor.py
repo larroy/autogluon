@@ -101,7 +101,7 @@ class TabularPredictor(BasePredictor):
 
         """
         if isinstance(dataset, pd.Series):
-            raise TypeError("dataset must be TabularDataset or pandas.DataFrame, not pandas.Series. \
+            raise TypeError("dataset must be pandas.DataFrame, not pandas.Series. \
                 To predict on just single example (ith row of table), use dataset.iloc[[i]] rather than dataset.iloc[i]")
         return self._learner.predict(X_test=dataset, model=model, as_pandas=as_pandas, use_pred_cache=use_pred_cache,
                                      add_to_pred_cache=add_to_pred_cache)
@@ -112,7 +112,7 @@ class TabularPredictor(BasePredictor):
 
             Parameters
             ----------
-            dataset : :class:`TabularDataset` or `pandas.DataFrame`
+            dataset : :class:`pandas.DataFrame`
                 The dataset to make predictions for. Should contain same column names as training Dataset and follow
                  the same format.
                 (may contain extra columns that won't be used by Predictor, including the label-column itself).
@@ -130,7 +130,7 @@ class TabularPredictor(BasePredictor):
             prediction problem.
         """
         if isinstance(dataset, pd.Series):
-            raise TypeError("dataset must be TabularDataset or pandas.DataFrame, not pandas.Series. \
+            raise TypeError("dataset must be pandas.DataFrame, not pandas.Series. \
                 To predict on just single example (ith row of table), use dataset.iloc[[i]] rather than dataset.iloc[i]")
         return self._learner.predict_proba(X_test=dataset, model=model, as_pandas=as_pandas)
 
@@ -142,7 +142,7 @@ class TabularPredictor(BasePredictor):
 
             Parameters
             ----------
-            dataset : :class:`TabularDataset` or `pandas.DataFrame`
+            dataset : :class: `pandas.DataFrame`
                 This Dataset must also contain the label-column with the same column-name as specified during `fit()`.
 
             silent : bool (optional)
@@ -191,7 +191,7 @@ class TabularPredictor(BasePredictor):
 
             Parameters
             ----------
-            dataset : :class:`TabularDataset` or `pandas.DataFrame` (optional)
+            dataset : :class: `pandas.DataFrame` (optional)
                 This Dataset must also contain the label-column with the same column-name as specified during fit().
                 If specified, then the leaderboard returned will contain an additional column 'score_test'
                 'score_test' is the score of the model on the validation_metric for the dataset provided
@@ -200,7 +200,7 @@ class TabularPredictor(BasePredictor):
 
             Returns
             -------
-            Pandas `pandas.DataFrame` of model performance summary information.
+            `pandas.DataFrame` of model performance summary information.
         """
         return self._learner.leaderboard(X=dataset, silent=silent)
 
@@ -313,12 +313,14 @@ class TabularPredictor(BasePredictor):
         Parameters
         ----------
         output_directory : str
-            Path to directory where trained models are stored (i.e. the `output_directory` specified in previous call to `fit()`).
+            Path to directory where trained models are stored (i.e. the `output_directory` specified in
+            the previous call to `fit()`).
         verbosity : int, default = 2
             Verbosity levels range from 0 to 4 and control how much information is generally printed by this Predictor.
             Higher levels correspond to more detailed print statements (you can set verbosity = 0 to suppress warnings).
             If using logging, you can alternatively control amount of information printed via `logger.setLevel(L)`, 
-            where `L` ranges from 0 to 50 (Note: higher values `L` correspond to fewer print statements, opposite of verbosity levels)
+            where `L` ranges from 0 to 50 (Note: higher values `L` correspond to fewer print statements, opposite of
+            verbosity levels)
 
         Returns
         -------

@@ -23,7 +23,6 @@ class TabularPrediction(BaseTask):
     AutoGluon Task for predicting values in column of tabular dataset (classification or regression)
     """
     
-    Dataset = TabularDataset
     Predictor = TabularPredictor
     
     @staticmethod
@@ -79,7 +78,7 @@ class TabularPrediction(BaseTask):
             Dataframe with training data
         label : str
             Name of column that contains the target variable to predict.
-        tuning_data : :class:`autogluon.task.tabular_prediction.TabularDataset`, default = None
+        tuning_data : :class:`pandas.DataFrame`, default = None
             Another dataset containing validation data reserved for hyperparameter tuning (in same format as training data). 
             Note: final model returned may be fit on this tuning_data as well as train_data. Do not provide your evaluation test data here! 
             In particular, when `num_bagging_folds` > 0 or `stack_ensemble_levels` > 0, models will be trained on both `tuning_data` and `train_data`.
@@ -219,10 +218,11 @@ class TabularPrediction(BaseTask):
         Examples
         --------
         >>> from autogluon import TabularPrediction as task
-        >>> train_data = task.Dataset(file_path='https://autogluon.s3-us-west-2.amazonaws.com/datasets/Inc/train.csv')
+        >>> import pandas as pd
+        >>> train_data = pd.read_csv('https://autogluon.s3-us-west-2.amazonaws.com/datasets/Inc/train.csv')
         >>> label_column = 'class'
         >>> predictor = task.fit(train_data=train_data, label=label_column)
-        >>> test_data = task.Dataset(file_path='https://autogluon.s3-us-west-2.amazonaws.com/datasets/Inc/test.csv')
+        >>> test_data = pd.read_csv('https://autogluon.s3-us-west-2.amazonaws.com/datasets/Inc/test.csv')
         >>> y_test = test_data[label_column]
         >>> test_data = test_data.drop(labels=[label_column], axis=1)
         >>> y_pred = predictor.predict(test_data)
