@@ -1,7 +1,7 @@
 import copy, logging, math
 import numpy as np
 
-from .dataset import TabularDataset
+import pandas
 from .predictor import TabularPredictor
 from ..base import BaseTask
 from ..base.base_task import schedulers
@@ -75,8 +75,8 @@ class TabularPrediction(BaseTask):
         
         Parameters
         ----------
-        train_data : :class:`autogluon.task.tabular_prediction.TabularDataset`
-            Table of the training data, which is similar to pandas DataFrame.
+        train_data : :class:`pandas.DataFrame`
+            Dataframe with training data
         label : str
             Name of column that contains the target variable to predict.
         tuning_data : :class:`autogluon.task.tabular_prediction.TabularDataset`, default = None
