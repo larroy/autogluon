@@ -5,6 +5,7 @@ version: 0.2
 phases:
   install:
     commands:
+      - curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh | bash
       - conda env update -n autogluon_py3 -f docs/build.yml
       - conda activate autogluon_py3
       - conda list
