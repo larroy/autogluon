@@ -14,4 +14,5 @@ def test_image_classification_models():
         y = net(x)
 
 if __name__ == '__main__':
-    test_image_classification_models()
+    pass
+    #test_image_classification_models()
