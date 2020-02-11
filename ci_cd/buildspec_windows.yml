@@ -5,9 +5,11 @@ version: 0.2
 phases:
   install:
     commands:
-      - dir
+      - pip3 install --upgrade
   build:
     commands:
       - python --version
-#      - pip3 show
-      - conda
+      - pip3 install --upgrade mxnet
+      - pip3 install -e .
+      - tests/unittests/test_tabular.py
+
