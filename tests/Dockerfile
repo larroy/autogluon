@@ -17,3 +17,4 @@ WORKDIR /work
 COPY utils.sh /work
 COPY conda_environment.yml /work
 RUN /work/utils.sh install_conda
+WORKDIR /autogluon

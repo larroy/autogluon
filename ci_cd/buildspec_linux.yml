@@ -8,5 +8,4 @@ phases:
       - tests/utils.sh install_conda
   build:
     commands:
-      - tests/utils.sh ag_conda_environment_
-      - tests/utils.sh run_all
+      - tests/utils.sh run_tests_conda_

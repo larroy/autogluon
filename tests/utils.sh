@@ -24,17 +24,17 @@ ag_conda_environment_() {
 run_tests_docker() {
     docker build -t autogluon .
     PRJ_ROOT=`readlink -f ..`
-    docker run -v $PRJ_ROOT:/autogluon/ -ti autogluon /work/utils.sh run_tests_docker_
+    docker run -v $PRJ_ROOT:/autogluon/ -ti autogluon /work/utils.sh run_tests_conda_
 }
 
 
-run_tests_docker_() {
-    cd /autogluon
+run_tests_conda_() {
     ag_conda_environment_
     run_all
 }
 
 run_all() {
+    ag_conda_environment_
     FILES=./tests/unittests/*.py
     for f in $FILES
     do
