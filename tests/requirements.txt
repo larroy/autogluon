@@ -1,0 +1,10 @@
+graphviz
+jupyter-sphinx>=0.2.2
+https://repo.mxnet.io/dist/mxnet-1.6.0-py2.py3-none-manylinux1_x86_64.whl
+portalocker
+nose
+docutils
+mu-notedown
+torch
+torchvision
+bokeh
