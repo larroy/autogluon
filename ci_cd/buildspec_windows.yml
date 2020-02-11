@@ -9,5 +9,5 @@ phases:
   build:
     commands:
       - python --version
-      - pip3 show
+#      - pip3 show
       - conda
