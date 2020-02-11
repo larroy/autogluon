@@ -5,7 +5,8 @@ version: 0.2
 phases:
   install:
     commands:
-      - tests/setup_test_env.sh
+      - tests/utils.sh install_conda
   build:
     commands:
-      - tests/run_all.sh
+      - tests/utils.sh ag_conda_environment_
+      - tests/utils.sh run_all
